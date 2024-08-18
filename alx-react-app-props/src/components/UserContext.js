@@ -1,5 +1,11 @@
-import { createContext } from 'react';
+import React, { createContext } from 'react';
 
-const UserContext = createContext();
+export const UserContext = createContext();
 
-export default UserContext;
+export const UserProvider = ({ children, value }) => {
+  return (
+    <UserContext.Provider value={value}>
+      {children}
+    </UserContext.Provider>
+  );
+};
