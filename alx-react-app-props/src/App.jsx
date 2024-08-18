@@ -1,15 +1,18 @@
 // src/App.jsx
 import React from 'react';
-import ProfilePage from './components/ProfilePage';
-import UserContext, { UserProvider } from './components/UserContext';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProfilePage from './ProfilePage';
+import { UserProvider } from './UserContext'; // Import UserProvider
 
 function App() {
-  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
-
   return (
-    <UserProvider value={userData}>
-      <ProfilePage />
-    </UserProvider>
+    <Router>
+      <UserProvider> {/* Wrap the application with UserProvider */}
+        <Routes>
+          <Route path="/" element={<ProfilePage />} />
+        </Routes>
+      </UserProvider>
+    </Router>
   );
 }
 
