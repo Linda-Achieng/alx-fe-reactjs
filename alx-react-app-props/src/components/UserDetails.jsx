@@ -1,9 +1,8 @@
-// src/UserDetails.jsx
 import React, { useContext } from 'react';
-import UserContext from './UserContext'; // Correctly import UserContext
+import UserContext from './UserContext';
 
 function UserDetails() {
-  const { userData } = useContext(UserContext); // Use context
+  const userData = useContext(UserContext);
 
   return (
     <div>

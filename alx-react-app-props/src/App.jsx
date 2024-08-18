@@ -1,18 +1,14 @@
-// src/App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ProfilePage from './ProfilePage';
-import { UserProvider } from './UserContext'; // Ensure this import is correct
+import ProfilePage from './components/ProfilePage';
+import UserContext from './components/UserContext';
 
 function App() {
+  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
+
   return (
-    <Router>
-      <UserProvider> {/* Wrap everything that needs access to the context */}
-        <Routes>
-          <Route path="/" element={<ProfilePage />} />
-        </Routes>
-      </UserProvider>
-    </Router>
+    <UserContext.Provider value={userData}>
+      <ProfilePage />
+    </UserContext.Provider>
   );
 }
 
