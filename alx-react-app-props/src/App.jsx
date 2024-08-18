@@ -2,12 +2,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProfilePage from './ProfilePage';
-import { UserProvider } from './UserContext'; // Import UserProvider
+import { UserProvider } from './UserContext'; // Ensure this import is correct
 
 function App() {
   return (
     <Router>
-      <UserProvider> {/* Wrap the application with UserProvider */}
+      <UserProvider> {/* Wrap everything that needs access to the context */}
         <Routes>
           <Route path="/" element={<ProfilePage />} />
         </Routes>
