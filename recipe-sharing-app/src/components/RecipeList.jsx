@@ -1,27 +1,34 @@
-import React, { useEffect } from 'react';
-import useRecipeStore from '../recipeStore'; // Adjust the path as needed
-import RecipeItem from './RecipeItem'; // Assuming you have a RecipeItem component
+import { Link } from "react-router-dom";
+import useRecipeStore from './recipeStore';
+import SearchBar from "./SearchBar";
 
 const RecipeList = () => {
-  const { filteredRecipes, filterRecipes } = useRecipeStore(state => ({
-    filteredRecipes: state.filteredRecipes,
-    filterRecipes: state.filterRecipes,
-  }));
-
-  useEffect(() => {
-    filterRecipes(); // Update filtered recipes when search term changes
-  }, [filterRecipes]);
+  const recipes = useRecipeStore(state => state.recipes);
+  const filtered = useRecipeStore(state => state.filteredRecipes);
 
   return (
     <div>
-      {filteredRecipes.length === 0 ? (
-        <p>No recipes found</p>
+      <SearchBar />
+      {filtered.length > 0 ? (
+        filtered.map(recipe => (
+          <div key={recipe.id} className="recipes">
+            <Link to={`/${recipe.id}`}>
+              <h3>{recipe.title}</h3>
+              <p>{recipe.description}</p>
+            </Link>
+          </div>
+        ))
+      ) : recipes.length > 0 ? (
+        recipes.map(recipe => (
+          <div key={recipe.id} className="recipes">
+            <Link to={`/${recipe.id}`}>
+              <h3>{recipe.title}</h3>
+              <p>{recipe.description}</p>
+            </Link>
+          </div>
+        ))
       ) : (
-        <ul>
-          {filteredRecipes.map(recipe => (
-            <RecipeItem key={recipe.id} recipe={recipe} />
-          ))}
-        </ul>
+        <p>No recipes available</p>
       )}
     </div>
   );
