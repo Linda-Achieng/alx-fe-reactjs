@@ -1,7 +1,7 @@
 // src/App.jsx
 import React from 'react';
 import RegistrationForm from './components/RegistrationForm';
-import FormikForm from './components/FormikForm';
+import FormikForm from './components/formikForm';
 
 function App() {
     return (
@@ -10,7 +10,7 @@ function App() {
             <RegistrationForm />
             
             <h1>Formik Components</h1>
-            <FormikForm />
+            <formikForm />
         </div>
     );
 }
