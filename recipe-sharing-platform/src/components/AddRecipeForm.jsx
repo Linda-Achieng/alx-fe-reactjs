@@ -40,7 +40,7 @@ const AddRecipeForm = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 md:w-2/3 lg:w-1/2 shadow-lg rounded-lg bg-white">
       <h1 className="text-4xl font-bold mb-6">Add New Recipe</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         {errors.title && <p className="text-red-500 mb-2">{errors.title}</p>}
@@ -50,7 +50,7 @@ const AddRecipeForm = () => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded shadow-sm"
           />
         </div>
         {errors.ingredients && <p className="text-red-500 mb-2">{errors.ingredients}</p>}
@@ -59,7 +59,7 @@ const AddRecipeForm = () => {
           <textarea
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded shadow-sm"
             rows="4"
           />
         </div>
@@ -69,13 +69,13 @@ const AddRecipeForm = () => {
           <textarea
             value={steps}
             onChange={(e) => setSteps(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded shadow-sm"
             rows="4"
           />
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+          className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 shadow-md"
         >
           Add Recipe
         </button>
