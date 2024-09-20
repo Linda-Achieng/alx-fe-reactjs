@@ -17,13 +17,13 @@ const Search = () => {
     try {
       const data = await fetchUserData({ username, location, minRepos, page });
       if (data.items.length === 0) {
-        setError("Looks like we can't find the user");
+        setError("Looks like we cant find the user");
       } else {
         setUsers((prevUsers) => [...prevUsers, ...data.items]);
         setHasMore(data.total_count > users.length + data.items.length);
       }
     } catch (err) {
-      setError("Looks like we can't find the user");
+      setError("Looks like we cant find the user");
     }
     setLoading(false);
   }
