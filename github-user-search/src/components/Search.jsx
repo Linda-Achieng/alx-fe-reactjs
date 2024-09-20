@@ -10,14 +10,15 @@ const Search = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError(false);
-    setUserData(null);
+    setError(false);  // Reset error state on new search
+    setUserData(null);  // Clear previous data on new search
 
     try {
       const response = await axios.get(`https://api.github.com/users/${username}`);
       setUserData(response.data);
     } catch (err) {
-      setError(true);
+      console.error("Error fetching the user:", err);  // Add error logging
+      setError(true);  // Set error state on failure
     } finally {
       setLoading(false);
     }
